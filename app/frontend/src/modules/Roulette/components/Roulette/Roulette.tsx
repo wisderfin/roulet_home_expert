@@ -3,7 +3,7 @@ import style from "./roulette.module.css";
 import RouletteCell from "../RouletteCell/RouletteCell";
 import { StringOrNumberArray } from "./RouletteTypes";
 import PointerRoulette from "../PointerRoulette/PointerRoulette";
-import { playRoulette } from "../../../../services/serversUser";
+import { playRoulette, getTimeUser } from "../../../../services/serversUser";
 import Modal from "../../../../components/UI/Modal/Modal";
 import useModal from "../../../../hooks/useModal";
 import Button from "../../../../components/UI/Button/Button";
@@ -16,7 +16,7 @@ export const Roulette = () => {
   const [click, setClick] = useState<boolean>(true);
   const [isAnimeteRoulette, setIsAnimateRoulette] = useState<boolean>(false);
   const [arrayRoulette, setArrayRoulette] = useState<StringOrNumberArray[]>(arrayTest);
-  const [timeLeft, setTimeLeft] = useState<number>(0);
+  const [timeLeft, setTimeLeft] = useState<number>(24 * 60 * 60);
   const [disabled, setDisabled] = useState(true)
 
   const [isVisibleModal, setIsVisibleModal, textModal, setTextModal] = useModal();
@@ -27,7 +27,15 @@ export const Roulette = () => {
   };
 
   useEffect(() => {
-    fetch()
+    const getTime = async () => {
+    try {
+      const resp = await getTimeUser()      
+      setTimeLeft(resp)
+    } catch (err) {
+      handleError(err)
+    } 
+    }
+    getTime()
   }, [])
 
 
@@ -63,10 +71,10 @@ export const Roulette = () => {
     setClick(false);
     try {
       const resp = await playRoulette();
-
+      const time = await getTimeUser()
       setArrayRoulette(() => [...arrayRoulette, ...resp.slice(3, resp.lenght)]);
       setDisabled(true)
-      setTimeLeft(6 * 60)
+      setTimeLeft(time)
       setIsAnimateRoulette(true);
     } catch (err) {
       handleError(err);

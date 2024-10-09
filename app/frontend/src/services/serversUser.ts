@@ -32,3 +32,21 @@ export async function playRoulette(): Promise<any> {
 
     }
   }}
+
+
+export async function getTimeUser() {
+  try {
+    const response = await axios({
+      method: "get",
+      url: `http://localhost:8000/game/time?id=${tg.initDataUnsafe.user?.id}`,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+    });
+
+    return response.data; 
+  } catch (error: any) {
+    throw error
+  }
+}

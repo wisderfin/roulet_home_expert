@@ -1,9 +1,8 @@
-from fastapi import FastAPI, Depends, Request, HTTPException
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from random import randint
 
 from components.game.router import router as game_router
-from components.service import DEPENDS, verify_ip, verify_user_agent
+
 
 app = FastAPI()
 
@@ -20,9 +19,6 @@ app.add_middleware(
 
 
 
-@app.get('/test', dependencies=[Depends(verify_ip), Depends(verify_user_agent)])
-async def main(request: Request):
-    # sleep(3)
-    return [randint(0, 100) for _ in range(0, 20)]
+
 
 app.include_router(game_router)

@@ -19,7 +19,7 @@ async def presents(id: int, username: str):
     if last_call_time is not None:
         time_since_last_call = current_time - float(last_call_time)
         # Если прошло меньше 24 часов (86400 секунд), возвращаем ошибку
-        if time_since_last_call < 1000:
+        if time_since_last_call < 60 * 60 * 24:
             raise HTTPException(status_code=403, detail="Вы можете вызывать эту функцию только раз в 24 часа.")
 
     # Сохраняем текущее время как время последнего вызова

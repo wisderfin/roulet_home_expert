@@ -47,4 +47,7 @@ async def get_present():
             raise ValueError("Уровень должен быть от 1 до 3")
 
     # Выбор элемента с учетом весов
-    return random.choices(items, weights=weights, k=1)[0]['name']
+    res = []
+    for i in range(20):
+        res.append(random.choices(items, weights=weights, k=1)[0]['name'])
+    return res[:-2] + random.choices(items, weights=weights, k=1)[0]['name'] + res[-1]

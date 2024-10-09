@@ -1,14 +1,29 @@
-from fastapi import APIRouter
-
-
-from components.service import DEPENDS
+from fastapi import APIRouter, HTTPException
+from ..redis_utils import get, set
 from components.game.service import get_present
-from components.game.scheme import DepositScheme
-from components.auth.scheme import IdScheme
+import time
 
 router = APIRouter(prefix="/game", tags=["Game"])
 
+@router.post("/presents")
+async def presents(id: int, username: str):
+    # Ключ для хранения времени последнего вызова
+    key = f"user:{id}:last_present_call"
 
-@router.post("/presents", dependencies=DEPENDS)
-async def presents(deposit: DepositScheme, user: IdScheme):
-    return await get_present(deposit.deposit)
+    # Получаем время последнего вызова из Redis
+    last_call_time = get(key)
+
+    current_time = time.time()  # Текущее время в секундах
+
+    # Если last_call_time не None, проверяем разницу во времени
+    if last_call_time is not None:
+        time_since_last_call = current_time - float(last_call_time)
+        # Если прошло меньше 24 часов (86400 секунд), возвращаем ошибку
+        if time_since_last_call < 86400:
+            raise HTTPException(status_code=403, detail="Вы можете вызывать эту функцию только раз в 24 часа.")
+
+    # Сохраняем текущее время как время последнего вызова
+    set(key, current_time)
+
+    # Получаем и возвращаем подарок
+    return await get_present()

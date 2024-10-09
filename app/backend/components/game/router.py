@@ -27,3 +27,15 @@ async def presents(id: int, username: str):
 
     # Получаем и возвращаем подарок
     return await get_present()
+
+
+@router.get("/time")
+async def timer(id: int):
+    # Ключ для хранения времени последнего вызова
+    key = f"user:{id}:last_present_call"
+    try:
+        # Получаем время последнего вызова из Redis
+        last_call_time = int(get(key))
+        return time.time - last_call_time
+    except:
+        return 0

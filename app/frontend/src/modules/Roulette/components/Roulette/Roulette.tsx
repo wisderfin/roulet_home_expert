@@ -27,24 +27,11 @@ export const Roulette = () => {
   };
 
   useEffect(() => {
-    let prevDate = localStorage.getItem("prevTime")
-    let getTime = localStorage.getItem('time')
-    let newDate: Date = new Date()
-    console.log(newDate.getTime());
-    console.log(prevDate);
-    
-    
-    console.log(Math.floor(newDate.getTime() / 1000 - Number(prevDate) / 1000));
-    
-    if (newDate && prevDate && getTime) {
-      setTimeLeft(Number(getTime) - Math.floor(newDate.getTime() / 1000 - Number(prevDate) / 1000))
-    }
+    fetch()
   }, [])
 
 
   useEffect(() => {    
-    localStorage.setItem('prevTime', String(new Date().getTime()))
-    localStorage.setItem('time', String(timeLeft))    
     if (timeLeft <= 0) {
       setDisabled(false)
     } else {

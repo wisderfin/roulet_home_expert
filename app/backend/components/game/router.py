@@ -19,7 +19,7 @@ async def presents(id: int, username: str):
     if last_call_time is not None:
         time_since_last_call = current_time - float(last_call_time)
         # Если прошло меньше 24 часов (86400 секунд), возвращаем ошибку
-        if time_since_last_call < 3:
+        if time_since_last_call < 1000:
             raise HTTPException(status_code=403, detail="Вы можете вызывать эту функцию только раз в 24 часа.")
 
     # Сохраняем текущее время как время последнего вызова
@@ -33,9 +33,8 @@ async def presents(id: int, username: str):
 async def timer(id: int):
     # Ключ для хранения времени последнего вызова
     key = f"user:{id}:last_present_call"
-    try:
+    
         # Получаем время последнего вызова из Redis
-        last_call_time = int(get(key))
-        return time.time - last_call_time
-    except:
-        return 0
+    last_call_time = get(key)
+    return int(1000 - (int(time.time()) - float(last_call_time)))
+    

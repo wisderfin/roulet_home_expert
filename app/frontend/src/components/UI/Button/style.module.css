@@ -8,5 +8,9 @@
     border-radius: 10px;
     align-content: center;
     margin: 0 auto;
+}
 
+.btn:disabled {
+    background: #006e74;
+    color: #a8a8a8;
 }

@@ -1,15 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import style from "./roulette.module.css";
 import RouletteCell from "../RouletteCell/RouletteCell";
 import { StringOrNumberArray } from "./RouletteTypes";
 import PointerRoulette from "../PointerRoulette/PointerRoulette";
 import { playRoulette } from "../../../../services/serversUser";
-import Fps from "../../../../components/fps/Fps";
 import Modal from "../../../../components/UI/Modal/Modal";
-import { useMoneyStore } from "../../../../store/store";
 import useModal from "../../../../hooks/useModal";
-import Footer from "../../../../components/Footer/Footer";
-import { GameInput } from "../../../GameInput";
+import Button from "../../../../components/UI/Button/Button";
 
 
 const arrayTest: StringOrNumberArray[] = ["КРУТИ", "КРУТИ", "КРУТИ"]
@@ -19,38 +16,71 @@ export const Roulette = () => {
   const [click, setClick] = useState<boolean>(true);
   const [isAnimeteRoulette, setIsAnimateRoulette] = useState<boolean>(false);
   const [arrayRoulette, setArrayRoulette] = useState<StringOrNumberArray[]>(arrayTest);
-  const [valueInput, setValueInput] = useState<string>('0'); 
+  const [timeLeft, setTimeLeft] = useState<number>(0);
+  const [disabled, setDisabled] = useState(true)
 
-  const { subMoney, money } = useMoneyStore();
   const [isVisibleModal, setIsVisibleModal, textModal, setTextModal] = useModal();
 
   const handleError = (error: unknown) => {
     setTextModal(String(error));
     setIsVisibleModal(true);
   };
-  
+
+  useEffect(() => {
+    let prevDate = localStorage.getItem("prevTime")
+    let getTime = localStorage.getItem('time')
+    let newDate: Date = new Date()
+    console.log(newDate.getTime());
+    console.log(prevDate);
+    
+    
+    console.log(Math.floor(newDate.getTime() / 1000 - Number(prevDate) / 1000));
+    
+    if (newDate && prevDate && getTime) {
+      setTimeLeft(Number(getTime) - Math.floor(newDate.getTime() / 1000 - Number(prevDate) / 1000))
+    }
+  }, [])
+
+
+  useEffect(() => {    
+    localStorage.setItem('prevTime', String(new Date().getTime()))
+    localStorage.setItem('time', String(timeLeft))    
+    if (timeLeft <= 0) {
+      setDisabled(false)
+    } else {
+      setDisabled(true)
+    }
+    const interval = setInterval(() => {
+      setTimeLeft((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
+    }, 1000);
+
+    return () => {
+      clearInterval(interval)
+    };
+  }, [timeLeft]);
+
+
+  const formatTime = (seconds: number) => {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+    return `${hours.toString().padStart(2, '0')}:${minutes
+      .toString()
+      .padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
+
   const startGame = async () => {
-    const numericalValue = Number(valueInput);
+    if (isAnimeteRoulette || !click || timeLeft > 0) return;
 
-    if (money < numericalValue || money <= 0) {
-      return handleError("Недостаточно средств");
-    }
-
-    if (numericalValue < 50) {
-      return handleError("Минимальная ставка 50");
-    }
-
-    if (isAnimeteRoulette || !click) return;
 
     setClick(false);
     try {
-      const resp = await playRoulette(numericalValue);
-      
-      
-      setArrayRoulette(() => [...arrayRoulette,...resp.slice(3, resp.lenght)]);
-      
+      const resp = await playRoulette();
+
+      setArrayRoulette(() => [...arrayRoulette, ...resp.slice(3, resp.lenght)]);
+      setDisabled(true)
+      setTimeLeft(6 * 60)
       setIsAnimateRoulette(true);
-      subMoney(numericalValue);
     } catch (err) {
       handleError(err);
     } finally {
@@ -61,30 +91,30 @@ export const Roulette = () => {
   const getPrize = () => {
     setIsEndAnim(false);
     setIsAnimateRoulette(false);
-    setArrayRoulette((prevArray) => [prevArray[18], prevArray[19], prevArray[20]])    
+    setArrayRoulette(arrayTest)
   };
   return (
-    <div className={style.main}>
-      <Fps />
-      <PointerRoulette>
-        <div className={style.roulette}>
-          <div
-            className={`${style.itemList} ${isAnimeteRoulette ? style.animate : ''}`}
-            onAnimationEnd={() => setIsEndAnim(true)}
-          >
-            {arrayRoulette?.map((item, index) => (
-              <RouletteCell getPrize={getPrize} item={item} key={index} isAnimate={isEndAnim} index={index} />
-            ))}
-          </div>
+    <div className={style.wrapperConteiner}>
+      <div className={style.containerRoulette}>
+        <div className={style.main}>
+          <PointerRoulette>
+            <div className={style.roulette}>
+              <div
+                className={`${style.itemList} ${isAnimeteRoulette ? style.animate : ''}`}
+                onAnimationEnd={() => setIsEndAnim(true)}
+              >
+                {arrayRoulette?.map((item, index) => (
+                  <RouletteCell getPrize={getPrize} item={item} key={index} isAnimate={isEndAnim} index={index} />
+                ))}
+              </div>
+            </div>
+          </PointerRoulette>
         </div>
-      </PointerRoulette>
-      <GameInput 
-        setValueInput={setValueInput} 
-        startGame={startGame} 
-        valueInput={valueInput} 
-      />
-      <Footer />
+        <Button disabled={disabled} onClick={startGame}>{timeLeft <= 0 ? "Крутить" : formatTime(timeLeft)}</Button>
+      </div>
       {isVisibleModal && <Modal funcOnClose={() => setIsVisibleModal(false)}>{textModal}</Modal>}
     </div>
+
+
   );
 };

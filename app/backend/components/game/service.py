@@ -48,6 +48,6 @@ async def get_present():
 
     # Выбор элемента с учетом весов
     res = []
-    for i in range(20):
+    for i in range(21):
         res.append(random.choices(items, weights=weights, k=1)[0]['name'])
-    return res[:-2] + random.choices(items, weights=weights, k=1)[0]['name'] + res[-1]
+    return res[:-2] + [random.choices(items, weights=weights, k=1)[0]['name']] + [res[-1]]

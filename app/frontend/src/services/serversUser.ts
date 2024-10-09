@@ -27,8 +27,8 @@ export async function playRoulette(): Promise<any> {
   } catch (error: any) {
     if (error.code == "ERR_NETWORK") {
       throw new Error("Сервер не доступен!")
-    } else {
-      throw new Error(error)
+    } else if (error.code == "ERR_BAD_REQUEST") {
+      throw "Не прошло 24 часа!"
 
     }
   }}

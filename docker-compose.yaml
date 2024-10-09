@@ -1,0 +1,116 @@
+version: "3.8"
+
+services:
+  # database
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5432:5432"
+    restart: on-failure
+    volumes:
+      - .:/postgres
+    networks:
+      - main
+
+  # database admin-panel
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PG_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PG_PASSWORD}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    ports:
+      - "80:80"
+    depends_on:
+      - postgres
+    restart: on-failure
+    networks:
+      - main
+
+  # service for migrations in database
+  alembic:
+    build:
+      context: ./app/backend/
+      dockerfile: ./dockerfile
+    command: sh -c "python -m alembic upgrade head"
+    depends_on:
+      - postgres
+    restart: no
+    networks:
+      - main
+
+  # servise for saves of temp data in RAM
+  redis:
+    image: redis:latest
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_PORT=6379
+      - REDIS_DATABASES=16
+      - REDIS_HOST=0.0.0.0
+    ports:
+      - "6379:6379"
+    volumes:
+      - .:/redis
+    command: redis-server --maxmemory 1gb --maxmemory-policy allkeys-lru
+    depends_on:
+      - postgres
+      - alembic
+    restart: always
+    networks:
+      - main
+
+  # service for run of fastapi
+  backend:
+    build:
+      context: ./app/backend/
+      dockerfile: ./dockerfile
+    command: sh -c "python -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app/backend:/app/backend
+    depends_on:
+      - postgres
+    restart: always
+    networks:
+      - main
+
+  # service for run vite
+  frontend:
+    build:
+      context: ./app/frontend
+      dockerfile: ./dockerfile
+    command: sh -c "npm run dev -- --host"
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./app/frontend:/app/frontend
+    restart: always
+    networks:
+      - main
+
+  # service for redirect localhost to web
+  tuna:
+    image: yuccastream/tuna:latest
+    command: start --all --tunnels-file=/opt/tuna.yml
+    environment:
+      - TUNA_TOKEN=${TUNA_TOKEN}
+    depends_on:
+      - backend
+    volumes:
+      - ./tuna.yml:/opt/tuna.yml
+    restart: always
+    networks:
+        - main
+
+# network for communication of services
+networks:
+  main:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.26.14.0/24

@@ -1,0 +1,22 @@
+# Базовый образ с Node.js
+FROM node:latest
+
+# Установи рабочую директорию
+WORKDIR /app/frontend
+
+# Копируй package.json и package-lock.json (если есть) для установки зависимостей
+COPY ./package*.json /app/frontend/
+
+# Установи зависимости проекта
+RUN npm install
+# RUN npm cache clean --force && npm install
+
+
+# Копируй остальные файлы проекта в контейнер
+COPY . /app/frontend/
+
+# Открой порт для сервера, если требуется
+EXPOSE 5173
+
+# Запусти проект через npm run dev
+# CMD ["npm", "run", "dev"]

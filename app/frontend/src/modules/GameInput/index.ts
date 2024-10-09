@@ -1,0 +1,1 @@
+export { GameInput } from "./components/GameINput/GameInput"

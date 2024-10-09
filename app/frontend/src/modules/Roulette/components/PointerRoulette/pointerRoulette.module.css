@@ -1,0 +1,14 @@
+.line {
+    background-color: #00DBE5;
+    height: 2px;
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 0 !important;
+    background: var(--main-color-linear);
+}
+
+.triangleTop {
+    transform: rotate(180deg);
+    width: 15px;
+    margin: 0 auto;
+}

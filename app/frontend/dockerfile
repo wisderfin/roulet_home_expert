@@ -17,6 +17,7 @@ COPY . /app/frontend/
 
 # Открой порт для сервера, если требуется
 EXPOSE 5173
+# CMD ["npm", "run", "dev", "--", "--host"]
 
 # Запусти проект через npm run dev
 # CMD ["npm", "run", "dev"]

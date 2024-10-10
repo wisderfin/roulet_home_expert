@@ -32,6 +32,17 @@ services:
     networks:
       - main
 
+  bot:
+    build:
+      context: ./app/backend/
+      dockerfile: ./dockerfile
+    command: sh -c "python bot/main.py"
+    volumes:
+      - ./app/backend:/app/backend
+    restart: always
+    networks:
+      - main
+
   # service for run vite
   frontend:
     build:
@@ -42,6 +53,7 @@ services:
       - "4173:4173"
     volumes:
       - ./app/frontend:/app/frontend
+      - /app/frontend/node_modules
     restart: always
     networks:
       - main

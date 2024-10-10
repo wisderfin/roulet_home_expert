@@ -5,6 +5,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     # redis
     REDIS_PASSWORD: str
+    BOT_TOKEN: str
 
     model_config = SettingsConfigDict(env_file='.env')
 

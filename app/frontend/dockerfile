@@ -16,7 +16,5 @@ RUN npm install
 COPY . /app/frontend/
 
 # Открой порт для сервера, если требуется
-EXPOSE 4173
 
-# Запусти проект через npm run dev
-# CMD ["npm", "run", "dev"]
+EXPOSE 4173

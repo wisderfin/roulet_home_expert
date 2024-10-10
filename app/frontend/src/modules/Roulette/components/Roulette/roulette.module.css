@@ -1,10 +1,20 @@
 .main {
-    height: 100%;
-    margin-top: 50px;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 50px;
+}
+
+.containerRoulette {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.wrapperConteiner {
+    height: 100%;
 }
 
 .roulette {
@@ -15,8 +25,8 @@
     position: relative;
     scroll-snap-type: x mandatory;
 }
-
-/* .roulette::after {
+/* 
+.roulette::after {
     content: "";
     position: absolute;
     inset: 0;

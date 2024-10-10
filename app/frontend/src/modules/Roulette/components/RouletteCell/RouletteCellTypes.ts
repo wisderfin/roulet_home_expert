@@ -1,7 +1,7 @@
 export type StringOrNumberArray = (string | number);
 
 export interface IRouletteCell {
-    item: StringOrNumberArray
+    item: any
     isAnimate: boolean
     index: number
     getPrize: () => void

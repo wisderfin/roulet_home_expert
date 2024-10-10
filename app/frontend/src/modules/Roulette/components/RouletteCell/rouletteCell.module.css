@@ -4,7 +4,6 @@
     width: 33.3333%;
     padding: 2%;
     align-content: center;
-    
 }
 
 .item {
@@ -22,7 +21,19 @@
 
 }
 
+.img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    border: 2px solid var(--main-color-border);
+}
+
 .winnerItem {
     transition: all 1s ease;
     transform: scale(1.15);
+}
+
+.text {
+    font-size: 26px;
 }

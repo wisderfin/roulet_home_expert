@@ -16,7 +16,7 @@ export const Roulette = () => {
   const [click, setClick] = useState<boolean>(true);
   const [isAnimeteRoulette, setIsAnimateRoulette] = useState<boolean>(false);
   const [arrayRoulette, setArrayRoulette] = useState<StringOrNumberArray[]>(arrayTest);
-  const [timeLeft, setTimeLeft] = useState<number>(24 * 60 * 60);
+  const [timeLeft, setTimeLeft] = useState<number>(0);
   const [disabled, setDisabled] = useState(true)
 
   const [isVisibleModal, setIsVisibleModal, textModal, setTextModal] = useModal();
@@ -31,6 +31,8 @@ export const Roulette = () => {
     try {
       const resp = await getTimeUser()      
       setTimeLeft(resp)
+      console.log(resp);
+      
     } catch (err) {
       handleError(err)
     } 

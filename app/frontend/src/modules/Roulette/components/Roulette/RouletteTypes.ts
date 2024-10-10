@@ -1,1 +1,1 @@
-export type StringOrNumberArray = (string | number);
+export type StringOrNumberArray = any;

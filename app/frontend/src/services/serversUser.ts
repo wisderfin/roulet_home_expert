@@ -22,7 +22,7 @@ export async function playRoulette(): Promise<any> {
         'Content-Type': 'application/json',
       },
     });
-
+    
     return response.data; // Возвращаем данные от сервера
   } catch (error: any) {
     if (error.code == "ERR_NETWORK") {
@@ -38,7 +38,7 @@ export async function getTimeUser() {
   try {
     const response = await axios({
       method: "get",
-      url: `http://localhost:8000/game/time?id=${tg.initDataUnsafe.user?.id}`,
+      url: `https://locback.ru.tuna.am/game/time?id=${tg.initDataUnsafe.user?.id}`,
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',

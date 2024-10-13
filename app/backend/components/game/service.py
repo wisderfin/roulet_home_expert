@@ -62,11 +62,11 @@ async def get_present(id: int, username: str):
 
     # Выбор элемента с учетом весов
     res = []
-    for i in range(21):
+    for i in range(41):
         res.append(random.choices(items, weights=weights, k=1)[0])
 
     prise = random.choices(items, weights=weights, k=1)[0]
-    await send_message(id, f'Вы выйграли: {prise["name"]}')
-    await send_message(1216867847, f'{username} получает: {prise["name"]}')
+    # await send_message(id, f'Вы выйграли: {prise["name"]}')
+    # await send_message(1216867847, f'{username} получает: {prise["name"]}')
 
     return res[:-2] + [prise] + [res[-1]]

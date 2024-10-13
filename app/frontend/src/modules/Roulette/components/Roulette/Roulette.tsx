@@ -9,7 +9,7 @@ import useModal from "../../../../hooks/useModal";
 import Button from "../../../../components/UI/Button/Button";
 
 
-const arrayTest: StringOrNumberArray[] = ["КРУТИ", "КРУТИ", "КРУТИ"]
+const arrayTest: StringOrNumberArray[] = ["КРУ2323ТИ", "КРУТИ", "КРУТИ"]
 
 export const Roulette = () => {
   const [isEndAnim, setIsEndAnim] = useState<boolean>(false);
@@ -26,12 +26,11 @@ export const Roulette = () => {
     setIsVisibleModal(true);
   };
 
-  useEffect(() => {
+  useEffect(() => {    
     const getTime = async () => {
     try {
       const resp = await getTimeUser()      
       setTimeLeft(resp)
-      console.log(resp);
       
     } catch (err) {
       handleError(err)
@@ -75,6 +74,7 @@ export const Roulette = () => {
       const resp = await playRoulette();
       const time = await getTimeUser()
       setArrayRoulette(() => [...arrayRoulette, ...resp.slice(3, resp.lenght)]);
+      
       setDisabled(true)
       setTimeLeft(time)
       setIsAnimateRoulette(true);
@@ -86,6 +86,7 @@ export const Roulette = () => {
   };
 
   const getPrize = () => {
+    console.log(arrayRoulette);
     setIsEndAnim(false);
     setIsAnimateRoulette(false);
     setArrayRoulette(arrayTest)

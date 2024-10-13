@@ -10,8 +10,8 @@ const RouletteCell: React.FC<IRouletteCell> = React.memo(({ item, isAnimate, ind
 
       <div className={style.itemWrapper}>
         {
-          !(item.name === 1) ? 
-          <div className={style.item}>{item.name}</div>
+          item.name === undefined ? 
+          <div className={style.item}>{item}</div>
           : 
           <img className={style.img} src={item.img} alt="" />
 
@@ -19,7 +19,7 @@ const RouletteCell: React.FC<IRouletteCell> = React.memo(({ item, isAnimate, ind
         
       </div>
 
-      {/* {isAnimate && index == 19 ?
+      {isAnimate && index == 59 ?
         <Modal funcOnClose={getPrize}>
           <h1>Заберите приз!</h1>
           <h2 className={style.text}>{item.name}</h2>
@@ -28,7 +28,7 @@ const RouletteCell: React.FC<IRouletteCell> = React.memo(({ item, isAnimate, ind
           </div>
           
           <Button onClick={getPrize} style={{ fontSize: "16px", marginTop: "10px" }}>Забрать</Button>
-        </Modal> : null} */}
+        </Modal> : null}
     </>
   )
 })

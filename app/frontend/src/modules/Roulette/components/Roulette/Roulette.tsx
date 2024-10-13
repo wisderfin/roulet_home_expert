@@ -9,7 +9,7 @@ import useModal from "../../../../hooks/useModal";
 import Button from "../../../../components/UI/Button/Button";
 
 
-const arrayTest: StringOrNumberArray[] = ["КРУ2323ТИ", "КРУТИ", "КРУТИ"]
+const arrayTest: StringOrNumberArray[] = ["КРУТИ", "КРУТИ", "КРУТИ"]
 
 export const Roulette = () => {
   const [isEndAnim, setIsEndAnim] = useState<boolean>(false);

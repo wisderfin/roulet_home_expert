@@ -46,8 +46,9 @@
 .animate {
     will-change: animation-name, animation-duration, animation-timing-function, animation-timing-function;
     animation-name: roulette;
-    animation-duration: 2s;
-    animation-timing-function: ease-in-out;
+    animation-duration: 10s;
+    animation-timing-function: cubic-bezier(.41,-0.01,.38,1.01);
+    /* cubic-bezier(.41,0,.39,1) */
     animation-fill-mode: forwards;
 }
 
@@ -57,7 +58,7 @@
     }
 
     100% {
-        transform: translateX(-100%);
+        transform: translateX(calc(58 * -33.3333%));
     }
 }
 

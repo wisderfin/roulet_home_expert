@@ -54,9 +54,9 @@ async def get_present(id: int, username: str):
         if level == '1':
             weights.append(95)
         elif level == '2':
-            weights.append(4.7)
+            weights.append(4.9)
         elif level == '3':
-            weights.append(0.3)
+            weights.append(0.1)
         else:
             raise ValueError("Уровень должен быть от 1 до 3")
 

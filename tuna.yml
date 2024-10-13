@@ -1,7 +1,7 @@
 tunnels:
   frontend:
     frontend: [frontend]
-    commandLine: tuna http frontend:4173 --ua-allow=Chrome --subdomain=locfront
+    commandLine: tuna http frontend:4173 --subdomain=locfront
 
   backend:
     tags: [backend]

@@ -7,6 +7,7 @@ import { playRoulette, getTimeUser } from "../../../../services/serversUser";
 import Modal from "../../../../components/UI/Modal/Modal";
 import useModal from "../../../../hooks/useModal";
 import Button from "../../../../components/UI/Button/Button";
+import logo from "../../assets/GroupLogo.svg"
 
 
 const arrayTest: StringOrNumberArray[] = ["КРУТИ", "КРУТИ", "КРУТИ"]
@@ -94,6 +95,7 @@ export const Roulette = () => {
   return (
     <div className={style.wrapperConteiner}>
       <div className={style.containerRoulette}>
+        <img src={logo} alt="logo" width="64px" className={style.img}/>
         <div className={style.main}>
           <PointerRoulette>
             <div className={style.roulette}>

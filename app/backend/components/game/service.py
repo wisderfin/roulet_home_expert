@@ -67,7 +67,7 @@ async def get_present(id: int, username: str):
         while count != 5:
             item = random.choices(items, weights=weights, k=1)[0]
             count += 1
-            if int(items['level']) > 1:
+            if int(item['level']) > 1:
                 count = 5
         res.append(item)
 

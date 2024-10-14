@@ -2,16 +2,16 @@ import random
 from bot.main import send_message
 async def get_present(id: int, username: str):
     items = [
-    {'name': 'Скидка 5%', 'level': '1', 'img': 'https://clck.ru/3DqsbC'},
-    {'name': 'Скидка 7%', 'level': '1', 'img': 'https://clck.ru/3DqqUb'},
-    {'name': 'Скидка 9%', 'level': '1', 'img': 'https://clck.ru/3Dqsio'},
-    {'name': 'Скидка 11%', 'level': '1', 'img': 'https://clck.ru/3Dqqgv'},
+    {'name': 'Скидка 5%', 'level': '0', 'img': 'https://clck.ru/3DqsbC'},
+    {'name': 'Скидка 7%', 'level': '0', 'img': 'https://clck.ru/3DqqUb'},
+    {'name': 'Скидка 9%', 'level': '0', 'img': 'https://clck.ru/3Dqsio'},
+    {'name': 'Скидка 11%', 'level': '0', 'img': 'https://clck.ru/3Dqqgv'},
     {'name': 'Скидка 15%', 'level': '1', 'img': 'https://clck.ru/3Dqqjk'},
     {'name': 'Скидка 17%', 'level': '1', 'img': 'https://clck.ru/3DqqpL'},
     {'name': 'Секатор садовый', 'level': '1', 'img': 'https://clck.ru/3DqqsZ'},
     {'name': 'Ножницы садовые', 'level': '1', 'img': 'https://clck.ru/3DqqwC'},
     {'name': 'Вывоз мусора на малой газели', 'level': '1', 'img': 'https://clck.ru/3DqqzC'},
-    {'name': 'Грузчики на час', 'level': '1', 'img': 'https://clck.ru/3Dqr2d'},
+    {'name': 'Грузчики на час', 'level': '2', 'img': 'https://clck.ru/3Dqr2d'},
     {'name': 'Грабли садовые', 'level': '1', 'img': 'https://clck.ru/3Dqsdz'},
     {'name': 'Корнеудалитель', 'level': '1', 'img': 'https://clck.ru/3Dqr7B'},
     {'name': '50руб. на телефон', 'level': '1', 'img': 'https://clck.ru/3DqrDn'},
@@ -51,8 +51,10 @@ async def get_present(id: int, username: str):
 
     for item in items:
         level = item['level']
-        if level == '1':
-            weights.append(95)
+        if level == '0':
+            weights.append(50)
+        elif level == '1':
+            weights.append(45)
         elif level == '2':
             weights.append(4.9)
         elif level == '3':

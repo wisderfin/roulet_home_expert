@@ -63,7 +63,13 @@ async def get_present(id: int, username: str):
     # Выбор элемента с учетом весов
     res = []
     for i in range(61):
-        res.append(random.choices(items, weights=weights, k=1)[0])
+        count = 0
+        while count != 5:
+            item = random.choices(items, weights=weights, k=1)[0]
+            count += 1
+            if int(items['level']) > 1:
+                count = 5
+        res.append(item)
 
     prise = random.choices(items, weights=weights, k=1)[0]
     await send_message(id, f'Вы выйграли: {prise["name"]}')

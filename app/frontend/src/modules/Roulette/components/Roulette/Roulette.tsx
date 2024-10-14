@@ -95,7 +95,7 @@ export const Roulette = () => {
   return (
     <div className={style.wrapperConteiner}>
       <div className={style.containerRoulette}>
-        <img src={logo} alt="logo" width="64px" className={style.img}/>
+        <img src={logo} alt="logo" width="80px" className={style.img}/>
         <div className={style.main}>
           <PointerRoulette>
             <div className={style.roulette}>

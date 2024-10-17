@@ -2,7 +2,7 @@
     z-index: 100;
     position: absolute;
     inset: 0;
-    background-color: black;
+    background-color: rgb(255, 255, 255);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,9 +11,19 @@
     transition: all 0.4s ease;
 }
 
-.loadPage > h1 {
-    margin-bottom: 20px;
-    font-size: 24px;
+
+.h1 {
+    letter-spacing: 2px;
+    font-family: "Roboto";
+    font-size: 32px;
+    color: black
+}
+
+.h3 {
+    color: rgb(0, 56, 129);
+    font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 30%;
+    font-size: 0.8rem;
 }
 
 :root {
@@ -56,21 +66,21 @@
 
 @-webkit-keyframes colors {
     0% {
-        stroke: #ffffff;
+        stroke: #000000;
     }
 
     100% {
-        stroke: #ffffff;
+        stroke: #000000;
     }
 }
 
 @keyframes colors {
     0% {
-        stroke: #ffffff;
+        stroke: #000000;
     }
 
     100% {
-        stroke: #ffffff;
+        stroke: #000000;
     }
 
 

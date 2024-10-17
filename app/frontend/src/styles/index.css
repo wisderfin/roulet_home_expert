@@ -5,6 +5,12 @@
     src: url("../assets/fonts/Nunito-VariableFont_wght.ttf");
 }
 
+
+@font-face {
+    font-family: "Roboto";
+    src: url("../assets/fonts/RobotoMono-Bold.ttf");
+}
+
 #root {
     height: 100%;
     display: flex;

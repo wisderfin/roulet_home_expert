@@ -19,7 +19,7 @@ const RouletteCell: React.FC<IRouletteCell> = React.memo(({ item, isAnimate, ind
         
       </div>
 
-      {isAnimate && index == 59 ?
+      {isAnimate && index == 61 ?
         <Modal funcOnClose={getPrize}>
           <h1>Заберите приз!</h1>
           <h2 className={style.text}>{item.name}</h2>

@@ -69,17 +69,25 @@ async def get_present(id: int, username: str):
 
     # Выбор элемента с учетом весов
     res = []
-    for i in range(61):
+    a = ''
+    b = ''
+    for i in range(59):
         count = 0
         while count != 5:
             item = random.choices(items, weights=weights, k=1)[0]
             count += 1
             if int(item['level']) > 1:
+                if int(item['level']) == 3:
+                    if a != '':
+                        a = item
+                    elif b != '':
+                        b = item
                 count = 5
         res.append(item)
 
     prise = random.choices(items, weights=weights, k=1)[0]
+
     asyncio.create_task(send_prize_message(id, prise))
     # await send_message(1216867847, f'@{username} получает: {prise["name"]}')
 
-    return res[:-2] + [prise] + [res[-1]]
+    return res + [a] + [prise] + [b]

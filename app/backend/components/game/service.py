@@ -1,6 +1,12 @@
 import random
 import asyncio
 from bot.main import send_message
+
+
+async def send_prize_message(id, prise):
+    await asyncio.sleep(15)  # Ждем 15 секунд
+    await send_message(id, f'Вы выйграли: {prise["name"]}')
+
 async def get_present(id: int, username: str):
     items = [
     {'name': 'Скидка 5%', 'level': '0', 'img': 'https://clck.ru/3DqsbC'},
@@ -73,8 +79,7 @@ async def get_present(id: int, username: str):
         res.append(item)
 
     prise = random.choices(items, weights=weights, k=1)[0]
-    await asyncio.sleep(15)
-    await send_message(id, f'Вы выйграли: {prise["name"]}')
+    asyncio.create_task(send_prize_message(id, prise))
     # await send_message(1216867847, f'@{username} получает: {prise["name"]}')
 
     return res[:-2] + [prise] + [res[-1]]

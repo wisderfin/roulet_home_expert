@@ -87,7 +87,6 @@ export const Roulette = () => {
   };
 
   const getPrize = () => {
-    console.log(arrayRoulette);
     setIsEndAnim(false);
     setIsAnimateRoulette(false);
     setArrayRoulette(arrayTest)

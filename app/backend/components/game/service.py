@@ -1,4 +1,5 @@
 import random
+import asyncio
 from bot.main import send_message
 async def get_present(id: int, username: str):
     items = [
@@ -59,8 +60,6 @@ async def get_present(id: int, username: str):
             weights.append(4.9)
         elif level == '3':
             weights.append(0.1)
-        else:
-            raise ValueError("Уровень должен быть от 1 до 3")
 
     # Выбор элемента с учетом весов
     res = []
@@ -74,6 +73,7 @@ async def get_present(id: int, username: str):
         res.append(item)
 
     prise = random.choices(items, weights=weights, k=1)[0]
+    await asyncio.sleep(15)
     await send_message(id, f'Вы выйграли: {prise["name"]}')
     # await send_message(1216867847, f'@{username} получает: {prise["name"]}')
 

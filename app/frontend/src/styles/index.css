@@ -13,19 +13,15 @@
 
 #root {
     height: 100%;
-    display: flex;
-    flex-direction: column;
     background-color: rgb(34, 40, 49, 0.8);
 }
 
 
 body {
- 
     background-image: url("../assets/fonApp.svg"); 
     background-repeat: no-repeat; 
     background-size: cover; 
     background-position: center;
-    
 }
 
 :root {

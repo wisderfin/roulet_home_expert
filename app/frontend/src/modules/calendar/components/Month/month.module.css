@@ -1,0 +1,25 @@
+.wrapperMonth {
+    padding: 0 20px;
+    background-color: white;
+}
+
+.month {
+    color: black;
+}
+
+
+.title {
+    color: black;
+    font-weight: 800;
+    font-size: 32px;
+    border-bottom: 3px solid black;
+    
+}
+
+.calendarNumber {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+

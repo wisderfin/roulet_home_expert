@@ -8,6 +8,7 @@ import Modal from "../../../../components/UI/Modal/Modal";
 import useModal from "../../../../hooks/useModal";
 import Button from "../../../../components/UI/Button/Button";
 import logo from "../../assets/GroupLogo.svg"
+import { Link } from "react-router-dom";
 
 
 const arrayTest: StringOrNumberArray[] = ["КРУТИ", "КРУТИ", "КРУТИ"]
@@ -94,6 +95,7 @@ export const Roulette = () => {
   return (
     <div className={style.wrapperConteiner}>
       <div className={style.containerRoulette}>
+        <button className={style.calendar}><Link to="/calendar">Посевной календарь</Link></button>
         <img src={logo} alt="logo" width="80px" className={style.img}/>
         <div className={style.main}>
           <PointerRoulette>

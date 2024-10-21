@@ -6,7 +6,7 @@
 }
 
 .containerRoulette {
-    padding: 50px 0;
+    padding-bottom: 50px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -45,6 +45,25 @@
     transition: transform 3s ease-in-out;
 }
 
+
+.calendar {
+    color: white;
+    margin-left: auto;
+    margin-right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--main-color-text);
+    /* border: 2px solid rgb(23, 45, 70); */
+    /* border-radius: 10px; */
+    /* padding: 0 5px; */
+}
+
+.calendar:active {
+    color: rgb(55, 62, 82);
+}
+
+
 .animate {
     will-change: animation-name, animation-duration, animation-timing-function, animation-timing-function;
     animation-name: roulette;
@@ -64,3 +83,17 @@
     }
 }
 
+
+
+a {
+    color: inherit; /* Наследуем цвет родителя */
+    text-decoration: none; /* Убираем подчеркивание */
+}
+
+a:hover,
+a:active,
+a:visited,
+a:focus {
+    color: inherit; /* Убираем цвет для всех состояний */
+    text-decoration: none; /* Убираем подчеркивание при наведении и клике */
+}

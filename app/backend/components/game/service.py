@@ -3,34 +3,34 @@ import asyncio
 from bot.main import send_message
 
 
-async def send_prize_message(id, prise):
-    await asyncio.sleep(15)  # Ждем 15 секунд
-    await send_message(id, f'Вы выйграли: {prise["name"]}')
+# async def send_prize_message(id, prise):
+#     await asyncio.sleep(15)  # Ждем 15 секунд
+#     await send_message(id, f'Вы выйграли: {prise["name"]}')
 
 async def get_present(id: int, username: str):
     items = [
-        {'name': 'Скидка 5%', 'level': '0', 'img': 'https://clck.ru/3DqsbC'},
-        {'name': 'Скидка 7%', 'level': '0', 'img': 'https://clck.ru/3DqqUb'},
-        {'name': 'Скидка 9%', 'level': '0', 'img': 'https://clck.ru/3Dqsio'},
-        {'name': 'Скидка 11%', 'level': '0', 'img': 'https://clck.ru/3Dqqgv'},
-        {'name': 'Скидка 15%', 'level': '1', 'img': 'https://clck.ru/3Dqqjk'},
-        {'name': 'Скидка 17%', 'level': '1', 'img': 'https://clck.ru/3DqqpL'},
-        {'name': 'Секатор садовый', 'level': '1', 'img': 'https://clck.ru/3DqqsZ'},
-        {'name': 'Ножницы садовые', 'level': '1', 'img': 'https://clck.ru/3DqqwC'},
-        {'name': 'Вывоз мусора на малой газели', 'level': '1', 'img': 'https://clck.ru/3DqqzC'},
-        {'name': 'Грузчики на час', 'level': '2', 'img': 'https://clck.ru/3Dqr2d'},
-        {'name': 'Грабли садовые', 'level': '1', 'img': 'https://clck.ru/3Dqsdz'},
-        {'name': 'Корнеудалитель', 'level': '1', 'img': 'https://clck.ru/3Dqr7B'},
-        {'name': '50руб. на телефон', 'level': '1', 'img': 'https://clck.ru/3DqrDn'},
-        {'name': '100руб. на телефон', 'level': '1', 'img': 'https://clck.ru/3DqrGH'},
-        {'name': 'Цепь на электропилу', 'level': '2', 'img': 'https://clck.ru/3DqrJn'},
+        {'name': 'Скидка 5%', 'level': '0', 'img': '/src/modules/Roulette/assets/imageItem/level1/5proc.jpg'},
+        {'name': 'Скидка 7%', 'level': '0', 'img': '/src/modules/Roulette/assets/imageItem/level1/7proc.jpg'},
+        {'name': 'Скидка 9%', 'level': '0', 'img': '/src/modules/Roulette/assets/imageItem/level1/9proc.jpg'},
+        {'name': 'Скидка 11%', 'level': '0', 'img': '/src/modules/Roulette/assets/imageItem/level1/11proc.jpg'},
+        {'name': 'Скидка 15%', 'level': '1', 'img': '/src/modules/Roulette/assets/imageItem/level1/15proc.jpg'},
+        {'name': 'Скидка 17%', 'level': '1', 'img': '/src/modules/Roulette/assets/imageItem/level1/17proc.jpg'},
+        {'name': 'Секатор садовый', 'level': '1', 'img': '/src/modules/Roulette/assets/imageItem/level1/secator.jpg'},
+        {'name': 'Ножницы садовые', 'level': '1', 'img': '/src/modules/Roulette/assets/imageItem/level1/sesisers.jpg'},
+        {'name': 'Вывоз мусора на малой газели', 'level': '1', 'img': '/src/modules/Roulette/assets/imageItem/level1/musor.jpg'},
+        {'name': 'Грузчики на час', 'level': '2', 'img': '/src/modules/Roulette/assets/imageItem/level2/gruzOnhours.jpg'},
+        {'name': 'Грабли садовые', 'level': '1', 'img': '/src/modules/Roulette/assets/imageItem/level1/grabSad.jpg'},
+        {'name': 'Корнеудалитель', 'level': '1', 'img': '/src/modules/Roulette/assets/imageItem/level1/korneDelete.jpg'},
+        {'name': '50руб. на телефон', 'level': '1', 'img': '/src/modules/Roulette/assets/imageItem/level1/50rub.jpg'},
+        {'name': '100руб. на телефон', 'level': '1', 'img': '/src/modules/Roulette/assets/imageItem/level1/100rub.jpg'},
+        {'name': 'Цепь на электропилу', 'level': '2', 'img': '/src/modules/Roulette/assets/imageItem/level2/chain.jpg'},
         {'name': 'Секатор фирменный', 'level': '2', 'img': 'https://clck.ru/3DqrMK'},
-        {'name': 'Лопат', 'level': '2', 'img': 'https://clck.ru/3DqrNw'},
-        {'name': 'Грабли', 'level': '2', 'img': 'https://clck.ru/3Dqsdz'},
-        {'name': 'Бензин 40 литров', 'level': '2', 'img': 'https://clck.ru/3DqrSK'},
-        {'name': 'Матыга', 'level': '2', 'img': 'https://clck.ru/3DqrAi'},
-        {'name': 'Сучкарез', 'level': '2', 'img': 'https://clck.ru/3DqrWy'},
-        {'name': 'Топор', 'level': '2', 'img': 'https://clck.ru/3DqrYJ'},
+        {'name': 'Лопата', 'level': '2', 'img': 'https://clck.ru/3DqrNw'},
+        {'name': 'Грабли', 'level': '2', 'img': '/src/modules/Roulette/assets/imageItem/level2/grab.jpg'},
+        {'name': 'Бензин 40 литров', 'level': '3', 'img': '/src/modules/Roulette/assets/imageItem/level3/40litr.jpg'},
+        {'name': 'Матыга', 'level': '2', 'img': '/src/modules/Roulette/assets/imageItem/level2/motga.jpg'},
+        {'name': 'Сучкарез', 'level': '2', 'img': '/src/modules/Roulette/assets/imageItem/level2/suckres.jpg'},
+        {'name': 'Топор', 'level': '2', 'img': '/src/modules/Roulette/assets/imageItem/level2/topor.jpg'},
         {'name': 'Вилы', 'level': '2', 'img': 'https://clck.ru/3DqrZS'},
         {'name': '500 рублей на телефон', 'level': '2', 'img': 'https://clck.ru/3Dqrdf'},
         {'name': 'Уборка 40% участка бесплатно', 'level': '2', 'img': 'https://clck.ru/3Dqrfm'},
@@ -52,7 +52,7 @@ async def get_present(id: int, username: str):
         {'name': '20 000 рублей', 'level': '3', 'img': 'https://clck.ru/3DqsGT'},
         {'name': 'Бесплатная уборка участка до 7 соток', 'level': '3', 'img': 'https://clck.ru/3DqsJ5'},
         {'name': 'Снегоуборщик', 'level': '3', 'img': 'https://clck.ru/3DqsKy'},
-        {'name': 'Набор ключей', 'level': '2', 'img': 'https://clck.ru/3DqsMw'}
+        {'name': 'Набор ключей', 'level': '3', 'img': 'https://clck.ru/3DqsMw'}
     ]
     level_3 = [
         {'name': 'Газонокосилка', 'level': '3', 'img': 'https://clck.ru/3Dqrob'},
@@ -68,18 +68,18 @@ async def get_present(id: int, username: str):
         {'name': '20 000 рублей', 'level': '3', 'img': 'https://clck.ru/3DqsGT'},
         {'name': 'Бесплатная уборка участка до 7 соток', 'level': '3', 'img': 'https://clck.ru/3DqsJ5'},
         {'name': 'Снегоуборщик', 'level': '3', 'img': 'https://clck.ru/3DqsKy'},
-        {'name': 'Набор ключей', 'level': '2', 'img': 'https://clck.ru/3DqsMw'}
+        {'name': 'Набор ключей', 'level': '3', 'img': 'https://clck.ru/3DqsMw'}
     ]
     weights = []
 
     for item in items:
         level = item['level']
         if level == '0':
-            weights.append(50)
+            weights.append(70)
         elif level == '1':
-            weights.append(45)
+            weights.append(19)
         elif level == '2':
-            weights.append(4.9)
+            weights.append(0.9)
         elif level == '3':
             weights.append(0.1)
 
@@ -96,7 +96,7 @@ async def get_present(id: int, username: str):
 
     prise = random.choices(items, weights=weights, k=1)[0]
 
-    asyncio.create_task(send_prize_message(id, prise))
+    # asyncio.create_task(send_prize_message(id, prise))
     await send_message(1216867847, f'@{username} {id} получает: {prise["name"]}')
 
     return res[:-1] + [random.choices(level_3)[0]] + [prise] + [random.choices(level_3)[0]]

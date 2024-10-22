@@ -1,3 +1,3 @@
 export interface IDaysProps {
-    days: number
+    days: number | string
 }

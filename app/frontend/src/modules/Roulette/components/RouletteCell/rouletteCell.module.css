@@ -27,7 +27,6 @@
     object-position: center;
     border-radius: 10px;
     border: 2px solid var(--main-color-border);
-    background-color: rgb(165, 9, 9);
 }
 
 .winnerItem {

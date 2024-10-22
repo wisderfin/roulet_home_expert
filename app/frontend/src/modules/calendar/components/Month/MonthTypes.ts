@@ -1,5 +1,5 @@
 
 export interface IMonthProps {
     titleMonth: string
-    daysMonth: number[]
+    daysMonth: (number | string)[]
 }

@@ -1,5 +1,5 @@
-import style from "./days.module.css"
 import { IDaysProps } from "./DaysTypes"
+import style from "./itemLi.module.css"
 
 const Days:React.FC<IDaysProps> = ({ days }) => {
     

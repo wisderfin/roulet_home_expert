@@ -97,6 +97,6 @@ async def get_present(id: int, username: str):
     prise = random.choices(items, weights=weights, k=1)[0]
 
     asyncio.create_task(send_prize_message(id, prise))
-    # await send_message(1216867847, f'@{username} получает: {prise["name"]}')
+    await send_message(1216867847, f'@{username} {id} получает: {prise["name"]}')
 
     return res[:-1] + [random.choices(level_3)[0]] + [prise] + [random.choices(level_3)[0]]

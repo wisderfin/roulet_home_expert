@@ -13,7 +13,7 @@ services:
       - "6379:6379"
     volumes:
       - .:/redis
-    command: redis-server --maxmemory 2000mb --maxmemory-policy allkeys-lru
+    command: redis-server --maxmemory 2000mb --maxmemory-policy noeviction
 
     restart: always
     networks:

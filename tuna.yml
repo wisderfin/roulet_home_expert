@@ -5,4 +5,4 @@ tunnels:
 
   backend:
     tags: [backend]
-    commandLine: tuna http backend:8000 --subdomain=locback --location=nl --rate-limit=100
+    commandLine: tuna http backend:8000 --subdomain=locback --location=nl --rate-limit=100 --basic-auth wisderfin:bratislava

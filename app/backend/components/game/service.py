@@ -9,66 +9,66 @@ from bot.main import send_message
 
 async def get_present(id: int, username: str):
     items = [
-        {'name': 'Скидка 5%', 'level': '0', 'img': '/src/modules/Roulette/assets/imageItem/level1/5proc.jpg'},
-        {'name': 'Скидка 7%', 'level': '0', 'img': '/src/modules/Roulette/assets/imageItem/level1/7proc.jpg'},
-        {'name': 'Скидка 9%', 'level': '0', 'img': '/src/modules/Roulette/assets/imageItem/level1/9proc.jpg'},
-        {'name': 'Скидка 11%', 'level': '0', 'img': '/src/modules/Roulette/assets/imageItem/level1/11proc.jpg'},
-        {'name': 'Скидка 15%', 'level': '1', 'img': '/src/modules/Roulette/assets/imageItem/level1/15proc.jpg'},
-        {'name': 'Скидка 17%', 'level': '1', 'img': '/src/modules/Roulette/assets/imageItem/level1/17proc.jpg'},
-        {'name': 'Секатор садовый', 'level': '1', 'img': '/src/modules/Roulette/assets/imageItem/level1/secator.jpg'},
-        {'name': 'Ножницы садовые', 'level': '1', 'img': '/src/modules/Roulette/assets/imageItem/level1/sesisers.jpg'},
-        {'name': 'Вывоз мусора на малой газели', 'level': '1', 'img': '/src/modules/Roulette/assets/imageItem/level1/musor.jpg'},
-        {'name': 'Грузчики на час', 'level': '2', 'img': '/src/modules/Roulette/assets/imageItem/level2/gruzOnhours.jpg'},
-        {'name': 'Грабли садовые', 'level': '1', 'img': '/src/modules/Roulette/assets/imageItem/level1/grabSad.jpg'},
-        {'name': 'Корнеудалитель', 'level': '1', 'img': '/src/modules/Roulette/assets/imageItem/level1/korneDelete.jpg'},
-        {'name': '50руб. на телефон', 'level': '1', 'img': '/src/modules/Roulette/assets/imageItem/level1/50rub.jpg'},
-        {'name': '100руб. на телефон', 'level': '1', 'img': '/src/modules/Roulette/assets/imageItem/level1/100rub.jpg'},
-        {'name': 'Цепь на электропилу', 'level': '2', 'img': '/src/modules/Roulette/assets/imageItem/level2/chain.jpg'},
-        {'name': 'Секатор фирменный', 'level': '2', 'img': 'https://clck.ru/3DqrMK'},
-        {'name': 'Лопата', 'level': '2', 'img': 'https://clck.ru/3DqrNw'},
-        {'name': 'Грабли', 'level': '2', 'img': '/src/modules/Roulette/assets/imageItem/level2/grab.jpg'},
-        {'name': 'Бензин 40 литров', 'level': '3', 'img': '/src/modules/Roulette/assets/imageItem/level3/40litr.jpg'},
-        {'name': 'Матыга', 'level': '2', 'img': '/src/modules/Roulette/assets/imageItem/level2/motga.jpg'},
-        {'name': 'Сучкарез', 'level': '2', 'img': '/src/modules/Roulette/assets/imageItem/level2/suckres.jpg'},
-        {'name': 'Топор', 'level': '2', 'img': '/src/modules/Roulette/assets/imageItem/level2/topor.jpg'},
-        {'name': 'Вилы', 'level': '2', 'img': 'https://clck.ru/3DqrZS'},
-        {'name': '500 рублей на телефон', 'level': '2', 'img': 'https://clck.ru/3Dqrdf'},
-        {'name': 'Уборка 40% участка бесплатно', 'level': '2', 'img': 'https://clck.ru/3Dqrfm'},
-        {'name': 'Уборка 55% участка бесплатно', 'level': '2', 'img': 'https://clck.ru/3Dqrfm'},
-        {'name': 'Уборка снега бесплатно', 'level': '2', 'img': 'https://clck.ru/3DqrhJ'},
-        {'name': 'Вывоз мусора на большой газели', 'level': '2', 'img': 'https://clck.ru/3DqrjU'},
-        {'name': 'Вывоз мусора на большой газели + Грузчики', 'level': '2', 'img': 'https://clck.ru/3DqrjU'},
-        {'name': 'Миникамин', 'level': '2', 'img': 'https://clck.ru/3Dqrmo'},
-        {'name': 'Газонокосилка', 'level': '3', 'img': 'https://clck.ru/3Dqrob'},
-        {'name': 'Электропила', 'level': '3', 'img': 'https://clck.ru/3Dqrs2'},
-        {'name': 'Бензопила', 'level': '3', 'img': 'https://clck.ru/3Dqrug'},
-        {'name': 'Триммер', 'level': '3', 'img': 'https://clck.ru/3Dqrwg'},
-        {'name': 'Электросучкорез', 'level': '3', 'img': 'https://clck.ru/3Dqrz9'},
-        {'name': 'Ветродойка бензиновая', 'level': '3', 'img': 'https://clck.ru/3Dqs3S'},
-        {'name': 'Ветродуйка электрическая', 'level': '3', 'img': 'https://clck.ru/3Dqs6M'},
-        {'name': 'Шуроповерт', 'level': '3', 'img': 'https://clck.ru/3Dqs8F'},
-        {'name': 'Болгарка', 'level': '3', 'img': 'https://clck.ru/3DqsBD'},
-        {'name': '10 000 рублей', 'level': '3', 'img': 'https://clck.ru/3DqsDi'},
-        {'name': '20 000 рублей', 'level': '3', 'img': 'https://clck.ru/3DqsGT'},
-        {'name': 'Бесплатная уборка участка до 7 соток', 'level': '3', 'img': 'https://clck.ru/3DqsJ5'},
-        {'name': 'Снегоуборщик', 'level': '3', 'img': 'https://clck.ru/3DqsKy'},
-        {'name': 'Набор ключей', 'level': '3', 'img': 'https://clck.ru/3DqsMw'}
+        {'name': 'Скидка 5%', 'level': '0', 'img': '5proc.jpg'},
+        {'name': 'Скидка 7%', 'level': '0', 'img': '7proc.jpg'},
+        {'name': 'Скидка 9%', 'level': '0', 'img': '9proc.jpg'},
+        {'name': 'Скидка 11%', 'level': '0', 'img': '11proc.jpg'},
+        {'name': 'Скидка 15%', 'level': '1', 'img': '15proc.jpg'},
+        {'name': 'Скидка 17%', 'level': '1', 'img': '17proc.jpg'},
+        {'name': 'Секатор садовый', 'level': '1', 'img': 'secator.jpg'},
+        {'name': 'Ножницы садовые', 'level': '1', 'img': 'sesisers.jpg'},
+        {'name': 'Вывоз мусора на малой газели', 'level': '1', 'img': 'musor.jpg'},
+        {'name': 'Грузчики на час', 'level': '2', 'img': 'gruzOnhours.jpg'},
+        {'name': 'Грабли садовые', 'level': '1', 'img': 'grabSad.jpg'},
+        {'name': 'Корнеудалитель', 'level': '1', 'img': 'korneDelete.jpg'},
+        {'name': '50руб. на телефон', 'level': '1', 'img': '50RUB.jpg'},
+        {'name': '100руб. на телефон', 'level': '1', 'img': '100RUB.jpg'}, 
+        {'name': 'Цепь на электропилу', 'level': '2', 'img': 'chain.jpg'},
+        # {'name': 'Секатор фирменный', 'level': '2', 'img': 'https://clck.ru/3DqrMK'}, #новая
+        {'name': 'Лопата', 'level': '2', 'img': 'Lopata.jpg'},
+        {'name': 'Грабли', 'level': '2', 'img': 'grab.jpg'},
+        {'name': 'Матыга', 'level': '2', 'img': 'motga.jpg'},
+        {'name': 'Сучкарез', 'level': '2', 'img': 'suckres.jpg'},
+        {'name': 'Топор', 'level': '2', 'img': 'topor.jpg'},
+        {'name': 'Вилы', 'level': '2', 'img': 'Vily.jpg'},
+        {'name': '500 рублей на телефон', 'level': '2', 'img': '500RUB.jpg'},
+        {'name': 'Уборка 40% участка бесплатно', 'level': '2', 'img': '40terr.jpg'}, 
+        {'name': 'Уборка 55% участка бесплатно', 'level': '2', 'img': '55terr.jpg'},
+        {'name': 'Уборка снега бесплатно', 'level': '2', 'img': 'sneg.jpg'},
+        {'name': 'Вывоз мусора на большой газели', 'level': '2', 'img': 'musor.jpg'},
+        {'name': 'Вывоз мусора на большой газели + Грузчики', 'level': '2', 'img': 'gruzAnddazel.jpg'},
+        {'name': 'Миникамин', 'level': '2', 'img': 'Kamin.jpg'},
+        {'name': 'Газонокосилка', 'level': '3', 'img': 'gazon.jpg'},
+        {'name': 'Бензин 40 литров', 'level': '3', 'img': '40litr.jpg'},
+        {'name': 'Электропила', 'level': '3', 'img': 'elPila.jpg'},
+        # {'name': 'Бензопила', 'level': '3', 'img': 'https://clck.ru/3Dqrug'}, # новая
+        {'name': 'Триммер', 'level': '3', 'img': 'Trimer.jpg'}, 
+        # {'name': 'Электросучкорез', 'level': '3', 'img': 'https://clck.ru/3Dqrz9'}, #новая
+        {'name': 'Ветродойка бензиновая', 'level': '3', 'img': 'BenzoDuika.jpg'},
+        {'name': 'Ветродуйка электрическая', 'level': '3', 'img': 'Elektroduika.jpg'},
+        {'name': 'Шуроповерт', 'level': '3', 'img': 'Drel.jpg'},
+        {'name': 'Болгарка', 'level': '3', 'img': 'Bolgarka.jpg'},
+        {'name': '10 000 рублей', 'level': '3', 'img': '10k.jpg'},
+        {'name': '20 000 рублей', 'level': '3', 'img': '20k.jpg'},
+        {'name': 'Бесплатная уборка участка до 7 соток', 'level': '3', 'img': '7sotok.jpg'},
+        # {'name': 'Снегоуборщик', 'level': '3', 'img': 'https://clck.ru/3DqsKy'}, # Новая 
+        # {'name': 'Набор ключей', 'level': '3', 'img': 'https://clck.ru/3DqsMw'} # Новая
     ]
     level_3 = [
-        {'name': 'Газонокосилка', 'level': '3', 'img': 'https://clck.ru/3Dqrob'},
-        {'name': 'Электропила', 'level': '3', 'img': 'https://clck.ru/3Dqrs2'},
-        {'name': 'Бензопила', 'level': '3', 'img': 'https://clck.ru/3Dqrug'},
-        {'name': 'Триммер', 'level': '3', 'img': 'https://clck.ru/3Dqrwg'},
-        {'name': 'Электросучкорез', 'level': '3', 'img': 'https://clck.ru/3Dqrz9'},
-        {'name': 'Ветродойка бензиновая', 'level': '3', 'img': 'https://clck.ru/3Dqs3S'},
-        {'name': 'Ветродуйка электрическая', 'level': '3', 'img': 'https://clck.ru/3Dqs6M'},
-        {'name': 'Шуроповерт', 'level': '3', 'img': 'https://clck.ru/3Dqs8F'},
-        {'name': 'Болгарка', 'level': '3', 'img': 'https://clck.ru/3DqsBD'},
-        {'name': '10 000 рублей', 'level': '3', 'img': 'https://clck.ru/3DqsDi'},
-        {'name': '20 000 рублей', 'level': '3', 'img': 'https://clck.ru/3DqsGT'},
-        {'name': 'Бесплатная уборка участка до 7 соток', 'level': '3', 'img': 'https://clck.ru/3DqsJ5'},
-        {'name': 'Снегоуборщик', 'level': '3', 'img': 'https://clck.ru/3DqsKy'},
-        {'name': 'Набор ключей', 'level': '3', 'img': 'https://clck.ru/3DqsMw'}
+        {'name': 'Газонокосилка', 'level': '3', 'img': 'gazon.jpg'},
+        {'name': 'Бензин 40 литров', 'level': '3', 'img': '40litr.jpg'},
+        {'name': 'Электропила', 'level': '3', 'img': 'elPila.jpg'},
+        {'name': 'Триммер', 'level': '3', 'img': 'Trimer.jpg'}, 
+        # {'name': 'Электросучкорез', 'level': '3', 'img': 'https://clck.ru/3Dqrz9'},
+        {'name': 'Ветродойка бензиновая', 'level': '3', 'img': 'BenzoDuika.jpg'},
+        {'name': 'Ветродуйка электрическая', 'level': '3', 'img': 'Elektroduika.jpg'},
+        {'name': 'Шуроповерт', 'level': '3', 'img': 'Drel.jpg'},
+        {'name': 'Болгарка', 'level': '3', 'img': 'Bolgarka.jpg'},
+        {'name': '10 000 рублей', 'level': '3', 'img': '10k.jpg'},
+        {'name': '20 000 рублей', 'level': '3', 'img': '20k.jpg'},
+        {'name': 'Бесплатная уборка участка до 7 соток', 'level': '3', 'img': '7sotok.jpg'},
+        # {'name': 'Снегоуборщик', 'level': '3', 'img': 'https://clck.ru/3DqsKy'},
+        # {'name': 'Набор ключей', 'level': '3', 'img': 'https://clck.ru/3DqsMw'}
     ]
     weights = []
 
@@ -97,6 +97,8 @@ async def get_present(id: int, username: str):
     prise = random.choices(items, weights=weights, k=1)[0]
 
     # asyncio.create_task(send_prize_message(id, prise))
-    await send_message(1216867847, f'@{username} {id} получает: {prise["name"]}')
+    # 6109323456
+    # 1216867847 твой
+    await send_message(6109323456, f'@{username} получает: {prise["name"]}')
 
     return res[:-1] + [random.choices(level_3)[0]] + [prise] + [random.choices(level_3)[0]]

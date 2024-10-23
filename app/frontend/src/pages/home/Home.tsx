@@ -1,3 +1,4 @@
+// import { Loading } from "../../components/Loading/Loading";
 import { Loading } from "../../components/Loading/Loading";
 import Modal from "../../components/UI/Modal/Modal";
 import { Roulette } from "../../modules/Roulette"
@@ -11,7 +12,7 @@ const Home = () => {
       <br/>
       <div style={{ color: "#bbbbbb" }}>Рулетку можно крутить только раз в 24 часа</div>
     </Modal>
-       <Loading/>
+    <Loading/>
       <Roulette />
       
     </>

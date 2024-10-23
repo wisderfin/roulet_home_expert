@@ -6,38 +6,28 @@
 }
 
 .containerRoulette {
-    padding-bottom: 50px;
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 
 
 .wrapperConteiner {
+    padding: 20px 0;
     height: 100%;
 }
 
 .roulette {
-    margin: 3px 0;
     align-content: center;
     overflow: hidden;
     width: 100vw;
     position: relative;
     scroll-snap-type: x mandatory;
 }
-/* 
-.roulette::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, var(--main-color-2) 0%,rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0) 80%, var(--main-color-2) 100%);
-    z-index: 1;
-} */
 
 .itemList {
-    max-height: 120px;
     display: flex;
     align-items: center;
     position: relative;
@@ -63,6 +53,12 @@
     color: rgb(55, 62, 82);
 }
 
+.footer {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    padding-left: 20px;
+}
 
 .animate {
     will-change: animation-name, animation-duration, animation-timing-function, animation-timing-function;

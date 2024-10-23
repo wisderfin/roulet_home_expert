@@ -4,16 +4,19 @@ import RouletteCell from "../RouletteCell/RouletteCell";
 import { StringOrNumberArray } from "./RouletteTypes";
 import PointerRoulette from "../PointerRoulette/PointerRoulette";
 import { playRoulette, getTimeUser } from "../../../../services/serversUser";
+import { Header } from "../../../Header";
 import Modal from "../../../../components/UI/Modal/Modal";
 import useModal from "../../../../hooks/useModal";
 import Button from "../../../../components/UI/Button/Button";
 import logo from "../../assets/GroupLogo.svg"
-import { Link } from "react-router-dom";
+import gazonkos from "../../assets/gazon.jpg"
+import trimmer from "../../assets/Trimer.jpg"
+import money20k from "../../assets/20k.jpg"
 
 
-const arrayTest: StringOrNumberArray[] = ["КРУТИ", "КРУТИ", "КРУТИ"]
+const arrayTest: StringOrNumberArray[] = [gazonkos, money20k, trimmer]
 
-export const Roulette = () => {
+export const Roulette = () => {  
   const [isEndAnim, setIsEndAnim] = useState<boolean>(false);
   const [click, setClick] = useState<boolean>(true);
   const [isAnimeteRoulette, setIsAnimateRoulette] = useState<boolean>(false);
@@ -75,7 +78,7 @@ export const Roulette = () => {
     try {
       const resp = await playRoulette();
       const time = await getTimeUser()
-      setArrayRoulette(() => [...arrayRoulette, ...resp.slice(3, resp.lenght)]);
+      setArrayRoulette(() => [...arrayRoulette, ...resp.slice(3, resp.length)]);
       
       setDisabled(true)
       setTimeLeft(time)
@@ -95,7 +98,7 @@ export const Roulette = () => {
   return (
     <div className={style.wrapperConteiner}>
       <div className={style.containerRoulette}>
-        <button className={style.calendar}><Link to="/calendar">Посевной календарь</Link></button>
+        <Header/>
         <img src={logo} alt="logo" width="80px" className={style.img}/>
         <div className={style.main}>
           <PointerRoulette>
@@ -112,6 +115,9 @@ export const Roulette = () => {
           </PointerRoulette>
         </div>
         <Button disabled={disabled} onClick={startGame}>{timeLeft <= 0 ? "Крутить" : formatTime(timeLeft)}</Button>
+        <div className={style.footer}>
+          
+        </div>
       </div>
       {isVisibleModal && <Modal funcOnClose={() => setIsVisibleModal(false)}>{textModal}</Modal>}
     </div>

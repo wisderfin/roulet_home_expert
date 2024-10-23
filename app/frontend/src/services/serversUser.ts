@@ -16,7 +16,7 @@ export async function playRoulette(): Promise<any> {
   try {
     const response = await axios({
       method: "post",
-      url: `https://locback.ru.tuna.am/game/presents?id=${tg.initDataUnsafe.user?.id}&username=${tg.initDataUnsafe.user?.username}`,
+      url: `https://locbacka.ru.tuna.am/game/presents?id=${tg.initDataUnsafe.user?.id}&username=${tg.initDataUnsafe.user?.username}`,
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ export async function getTimeUser() {
   try {
     const response = await axios({
       method: "get",
-      url: `https://locback.ru.tuna.am/game/time?id=${tg.initDataUnsafe.user?.id}`,
+      url: `https://locbacka.ru.tuna.am/game/time?id=${tg.initDataUnsafe.user?.id}`,
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import style from "./loading.module.css"
-import logo from "../../assets/LogoHomeExpert.svg"
 
 export const Loading = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -27,7 +26,6 @@ export const Loading = () => {
   return (
     <div className={style.loadPage} style={isRemoving ? { opacity: 0 } : undefined}>
       <div className={style.content}>
-        {/* <img src={logo} alt="logo" /> */}
         <h1 className={style.h1}>HOME EXPERT</h1>
         <h3 className={style.h3}>Клининг. Электрика. Сантехника. Грузчики</h3>
         <svg className={style.spinner} width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">

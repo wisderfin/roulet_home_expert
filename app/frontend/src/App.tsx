@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from './pages/home/Home'
 import Calendar from "./pages/сalendar/Calendar";
+import Home from "./pages/home/Home"
+
 
 const home = createBrowserRouter([
   {

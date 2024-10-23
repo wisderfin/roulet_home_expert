@@ -5,6 +5,7 @@ import Modal from "../../../../components/UI/Modal/Modal";
 import Button from "../../../../components/UI/Button/Button";
 
 const RouletteCell: React.FC<IRouletteCell> = React.memo(({ item, isAnimate, index, getPrize }) => {
+  console.log(item)
   
   return (
     <>
@@ -12,9 +13,9 @@ const RouletteCell: React.FC<IRouletteCell> = React.memo(({ item, isAnimate, ind
       <div className={style.itemWrapper}>
         {
           item.name === undefined ? 
-          <div className={style.item}>{item}</div>
+          <img className={style.img} src={item} alt="" />
           : 
-          <img className={style.img} src={item.img} alt="" />
+          <img className={style.img} src={"https://locbacka.ru.tuna.am/game/img/" + item.img} alt="" />
 
         }
         
@@ -25,7 +26,7 @@ const RouletteCell: React.FC<IRouletteCell> = React.memo(({ item, isAnimate, ind
           <h1>Заберите приз!</h1>
           <h2 className={style.text}>{item.name}</h2>
           <div className={`${style.itemWrapper}`} style={{ width: "50%" }}>
-            <img className={style.img} src={item.img} alt={item.name}/>
+            <img className={style.img} src={"https://locbacka.ru.tuna.am/game/img/" + item.img} alt={item.name}/>
           </div>
           
           <Button onClick={getPrize} style={{ fontSize: "16px", marginTop: "10px" }}>Забрать</Button>

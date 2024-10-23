@@ -19,7 +19,7 @@ export const Header = () => {
         </a>
       </Button>
       <Button style={{ padding: "0", fontSize: "0", width: "15%" }}>
-        <a href="https://t.me/klinning63/272">
+        <a href="https://t.me/klinning63/277">
           <img src={presents} alt="" className={style.img} />
         </a>
       </Button>

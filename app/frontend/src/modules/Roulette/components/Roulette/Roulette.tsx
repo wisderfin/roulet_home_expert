@@ -116,7 +116,7 @@ export const Roulette = () => {
         </div>
         <Button disabled={disabled} onClick={startGame}>{timeLeft <= 0 ? "Крутить" : formatTime(timeLeft)}</Button>
         <div className={style.footer}>
-          Выйгрыш могут забрать только подписчики канала "Домашний эксперт"
+          Выйгрыш могут забрать только подписчики канала <br /> "Домашний эксперт"
         </div>
       </div>
       {isVisibleModal && <Modal funcOnClose={() => setIsVisibleModal(false)}>{textModal}</Modal>}

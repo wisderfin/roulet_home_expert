@@ -22,7 +22,7 @@ async def get_present(id: int, username: str):
         {'name': 'Грабли садовые', 'level': '1', 'img': 'grabSad.jpg'},
         {'name': 'Корнеудалитель', 'level': '1', 'img': 'korneDelete.jpg'},
         {'name': '50руб. на телефон', 'level': '1', 'img': '50RUB.jpg'},
-        {'name': '100руб. на телефон', 'level': '1', 'img': '100RUB.jpg'}, 
+        {'name': '100руб. на телефон', 'level': '1', 'img': '100RUB.jpg'},
         {'name': 'Цепь на электропилу', 'level': '2', 'img': 'chain.jpg'},
         # {'name': 'Секатор фирменный', 'level': '2', 'img': 'https://clck.ru/3DqrMK'}, #новая
         {'name': 'Лопата', 'level': '2', 'img': 'Lopata.jpg'},
@@ -32,7 +32,7 @@ async def get_present(id: int, username: str):
         {'name': 'Топор', 'level': '2', 'img': 'topor.jpg'},
         {'name': 'Вилы', 'level': '2', 'img': 'Vily.jpg'},
         {'name': '500 рублей на телефон', 'level': '2', 'img': '500RUB.jpg'},
-        {'name': 'Уборка 40% участка бесплатно', 'level': '2', 'img': '40terr.jpg'}, 
+        {'name': 'Уборка 40% участка бесплатно', 'level': '2', 'img': '40terr.jpg'},
         {'name': 'Уборка 55% участка бесплатно', 'level': '2', 'img': '55terr.jpg'},
         {'name': 'Уборка снега бесплатно', 'level': '2', 'img': 'sneg.jpg'},
         {'name': 'Вывоз мусора на большой газели', 'level': '2', 'img': 'musor.jpg'},
@@ -42,7 +42,7 @@ async def get_present(id: int, username: str):
         {'name': 'Бензин 40 литров', 'level': '3', 'img': '40litr.jpg'},
         {'name': 'Электропила', 'level': '3', 'img': 'elPila.jpg'},
         # {'name': 'Бензопила', 'level': '3', 'img': 'https://clck.ru/3Dqrug'}, # новая
-        {'name': 'Триммер', 'level': '3', 'img': 'Trimer.jpg'}, 
+        {'name': 'Триммер', 'level': '3', 'img': 'Trimer.jpg'},
         # {'name': 'Электросучкорез', 'level': '3', 'img': 'https://clck.ru/3Dqrz9'}, #новая
         {'name': 'Ветродойка бензиновая', 'level': '3', 'img': 'BenzoDuika.jpg'},
         {'name': 'Ветродуйка электрическая', 'level': '3', 'img': 'Elektroduika.jpg'},
@@ -51,14 +51,14 @@ async def get_present(id: int, username: str):
         {'name': '10 000 рублей', 'level': '3', 'img': '10k.jpg'},
         {'name': '20 000 рублей', 'level': '3', 'img': '20k.jpg'},
         {'name': 'Бесплатная уборка участка до 7 соток', 'level': '3', 'img': '7sotok.jpg'},
-        # {'name': 'Снегоуборщик', 'level': '3', 'img': 'https://clck.ru/3DqsKy'}, # Новая 
+        # {'name': 'Снегоуборщик', 'level': '3', 'img': 'https://clck.ru/3DqsKy'}, # Новая
         # {'name': 'Набор ключей', 'level': '3', 'img': 'https://clck.ru/3DqsMw'} # Новая
     ]
     level_3 = [
         {'name': 'Газонокосилка', 'level': '3', 'img': 'gazon.jpg'},
         {'name': 'Бензин 40 литров', 'level': '3', 'img': '40litr.jpg'},
         {'name': 'Электропила', 'level': '3', 'img': 'elPila.jpg'},
-        {'name': 'Триммер', 'level': '3', 'img': 'Trimer.jpg'}, 
+        {'name': 'Триммер', 'level': '3', 'img': 'Trimer.jpg'},
         # {'name': 'Электросучкорез', 'level': '3', 'img': 'https://clck.ru/3Dqrz9'},
         {'name': 'Ветродойка бензиновая', 'level': '3', 'img': 'BenzoDuika.jpg'},
         {'name': 'Ветродуйка электрическая', 'level': '3', 'img': 'Elektroduika.jpg'},
@@ -87,11 +87,11 @@ async def get_present(id: int, username: str):
     res = []
     for i in range(61):
         count = 0
-        while count != 5:
+        while count != 10:
             item = random.choices(items, weights=weights, k=1)[0]
             count += 1
             if int(item['level']) > 1:
-                count = 5
+                count = 10
         res.append(item)
 
     prise = random.choices(items, weights=weights, k=1)[0]

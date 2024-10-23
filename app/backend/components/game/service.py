@@ -51,8 +51,8 @@ async def get_present(id: int, username: str):
         {'name': '10 000 рублей', 'level': '3', 'img': '10k.jpg'},
         {'name': '20 000 рублей', 'level': '3', 'img': '20k.jpg'},
         {'name': 'Бесплатная уборка участка до 7 соток', 'level': '3', 'img': '7sotok.jpg'},
-        {'name': 'Снегоуборщик', 'level': '3', 'img': 'UborkaSnega.jpg'}, 
-        {'name': 'Набор ключей', 'level': '3', 'img': 'NaborInstrumentov.jpg'} 
+        {'name': 'Снегоуборщик', 'level': '3', 'img': 'UborkaSnega.jpg'},
+        {'name': 'Набор ключей', 'level': '3', 'img': 'NaborInstrumentov.jpg'}
     ]
     level_3 = [
         {'name': 'Газонокосилка', 'level': '3', 'img': 'gazon.jpg'},
@@ -107,5 +107,7 @@ async def get_present(id: int, username: str):
     # 6109323456
     # 1216867847 твой
     await send_message(6109323456, f'@{username} получает: {prise["name"]}')
+    await send_message(id, f'@{username} {id} получает: {prise["name"]}')
+
 
     return res[:-1] + [random.choices(level_3)[0]] + [prise] + [random.choices(level_3)[0]]

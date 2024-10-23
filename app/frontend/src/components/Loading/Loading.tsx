@@ -7,7 +7,7 @@ export const Loading = () => {
 
   const randomTime = Math.floor(Math.random() * (5000 - 2000 + 1)) + 2000;
 
-  window.addEventListener("load", () => {
+  document.addEventListener("load", () => {
 
     const timer = setTimeout(() => {
       setIsRemoving(true);

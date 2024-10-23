@@ -87,11 +87,11 @@ async def get_present(id: int, username: str):
     res = []
     for i in range(61):
         count = 0
-        while count != 10:
+        while count != 20:
             item = random.choices(items, weights=weights, k=1)[0]
             count += 1
             if int(item['level']) > 1:
-                count = 10
+                count = 20
         res.append(item)
 
     prise = random.choices(items, weights=weights, k=1)[0]

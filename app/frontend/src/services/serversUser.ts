@@ -16,7 +16,7 @@ export async function playRoulette(): Promise<any> {
   try {
     const response = await axios({
       method: "post",
-      url: `https://locbacka.nl.tuna.am/game/presents?id=${tg.initDataUnsafe.user?.id}&username=${tg.initDataUnsafe.user?.username}`,
+      url: `https://locback.nl.tuna.am/game/presents?id=${tg.initDataUnsafe.user?.id}&username=${tg.initDataUnsafe.user?.username}`,
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -35,17 +35,15 @@ export async function playRoulette(): Promise<any> {
 
 
 export async function getTimeUser() {
-  const username = import.meta.env.VITE_USERNAME; 
-  const password = import.meta.env.VITE_PASSWORD;
+  
   try {
     const response = await axios({
       method: "get",
-      url: `https://locbacka.nl.tuna.am/game/time?id=${tg.initDataUnsafe.user?.id}`,
+      url: `https://locback.nl.tuna.am/game/time?id=${tg.initDataUnsafe.user?.id}`,
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': `Basic ${btoa(`${username}:${password}`)}`
-      },
+      }, 
     });
 
     return response.data;

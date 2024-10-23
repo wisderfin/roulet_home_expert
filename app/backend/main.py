@@ -6,7 +6,7 @@ from components.game.router import router as game_router
 
 app = FastAPI()
 
-origins = ['https://slmnfrontend.ru.tuna.am', '*']
+origins = ['https://locfront.ru.tuna.am']
 
 app.add_middleware(
     CORSMiddleware,

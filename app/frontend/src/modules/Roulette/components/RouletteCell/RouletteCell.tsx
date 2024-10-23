@@ -5,7 +5,6 @@ import Modal from "../../../../components/UI/Modal/Modal";
 import Button from "../../../../components/UI/Button/Button";
 
 const RouletteCell: React.FC<IRouletteCell> = React.memo(({ item, isAnimate, index, getPrize }) => {
-  console.log(item)
 
   return (
     <>

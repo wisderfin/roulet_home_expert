@@ -1,8 +1,8 @@
 tunnels:
   frontend:
     frontend: [frontend]
-    commandLine: tuna http frontend:4173 --subdomain=locfront --rate-limit=20
+    commandLine: tuna http frontend:5173 --subdomain=locfronta --rate-limit=20
 
   backend:
     tags: [backend]
-    commandLine: tuna http backend:8000 --subdomain=locback --location=nl --rate-limit=100
+    commandLine: tuna http backend:8000 --subdomain=locbacka --location=nl --rate-limit=100

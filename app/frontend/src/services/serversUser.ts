@@ -16,13 +16,13 @@ export async function playRoulette(): Promise<any> {
   try {
     const response = await axios({
       method: "post",
-      url: `https://locback.ru.tuna.am/game/presents?id=${tg.initDataUnsafe.user?.id}&username=${tg.initDataUnsafe.user?.username}`,
+      url: `https://locback.nl.tuna.am/game/presents?id=${tg.initDataUnsafe.user?.id}&username=${tg.initDataUnsafe.user?.username}`,
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
     });
-    
+
     return response.data; // Возвращаем данные от сервера
   } catch (error: any) {
     if (error.code == "ERR_NETWORK") {
@@ -38,14 +38,14 @@ export async function getTimeUser() {
   try {
     const response = await axios({
       method: "get",
-      url: `https://locback.ru.tuna.am/game/time?id=${tg.initDataUnsafe.user?.id}`,
+      url: `https://locback.nl.tuna.am/game/time?id=${tg.initDataUnsafe.user?.id}`,
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
     });
 
-    return response.data; 
+    return response.data;
   } catch (error: any) {
     throw error
   }

@@ -15,7 +15,7 @@ const RouletteCell: React.FC<IRouletteCell> = React.memo(({ item, isAnimate, ind
           item.name === undefined ? 
           <img className={style.img} src={item} alt="" />
           : 
-          <img className={style.img} src={"https://locbacka.ru.tuna.am/game/img/" + item.img} alt="" />
+          <img className={style.img} src={"https://locback.ru.tuna.am/game/img/" + item.img} alt="" />
 
         }
         
@@ -26,7 +26,7 @@ const RouletteCell: React.FC<IRouletteCell> = React.memo(({ item, isAnimate, ind
           <h1>Заберите приз!</h1>
           <h2 className={style.text}>{item.name}</h2>
           <div className={`${style.itemWrapper}`} style={{ width: "50%" }}>
-            <img className={style.img} src={"https://locbacka.ru.tuna.am/game/img/" + item.img} alt={item.name}/>
+            <img className={style.img} src={"https://locback.ru.tuna.am/game/img/" + item.img} alt={item.name}/>
           </div>
           
           <Button onClick={getPrize} style={{ fontSize: "16px", marginTop: "10px" }}>Забрать</Button>

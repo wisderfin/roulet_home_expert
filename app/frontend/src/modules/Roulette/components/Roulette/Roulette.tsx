@@ -16,7 +16,7 @@ import money20k from "../../assets/20k.jpg"
 
 const arrayTest: StringOrNumberArray[] = [gazonkos, money20k, trimmer]
 
-export const Roulette = () => {  
+export const Roulette = () => {
   const [isEndAnim, setIsEndAnim] = useState<boolean>(false);
   const [click, setClick] = useState<boolean>(true);
   const [isAnimeteRoulette, setIsAnimateRoulette] = useState<boolean>(false);
@@ -31,21 +31,21 @@ export const Roulette = () => {
     setIsVisibleModal(true);
   };
 
-  useEffect(() => {    
+  useEffect(() => {
     const getTime = async () => {
     try {
-      const resp = await getTimeUser()      
+      const resp = await getTimeUser()
       setTimeLeft(resp)
-      
+
     } catch (err) {
       handleError(err)
-    } 
+    }
     }
     getTime()
   }, [])
 
 
-  useEffect(() => {    
+  useEffect(() => {
     if (timeLeft <= 0) {
       setDisabled(false)
     } else {
@@ -79,7 +79,7 @@ export const Roulette = () => {
       const resp = await playRoulette();
       const time = await getTimeUser()
       setArrayRoulette(() => [...arrayRoulette, ...resp.slice(3, resp.length)]);
-      
+
       setDisabled(true)
       setTimeLeft(time)
       setIsAnimateRoulette(true);
@@ -116,7 +116,7 @@ export const Roulette = () => {
         </div>
         <Button disabled={disabled} onClick={startGame}>{timeLeft <= 0 ? "Крутить" : formatTime(timeLeft)}</Button>
         <div className={style.footer}>
-          
+          Выйгрыш могут забрать только подписчики канала "Домашний эксперт"
         </div>
       </div>
       {isVisibleModal && <Modal funcOnClose={() => setIsVisibleModal(false)}>{textModal}</Modal>}

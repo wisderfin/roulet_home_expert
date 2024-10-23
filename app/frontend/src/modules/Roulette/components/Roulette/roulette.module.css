@@ -54,8 +54,9 @@
 }
 
 .footer {
-    display: flex;
-    align-items: flex-start;
+    text-align: center;
+    font-size: 12px;
+    color: rgb(50, 53, 94);
     width: 100%;
     padding-left: 20px;
 }
@@ -64,7 +65,7 @@
     will-change: animation-name, animation-duration, animation-timing-function, animation-timing-function;
     animation-name: roulette;
     animation-duration: 15s;
-    animation-timing-function: cubic-bezier(.41,-0.01,.38,1.01);
+    animation-timing-function: cubic-bezier(.41, -0.01, .38, 1.01);
     /* cubic-bezier(.41,0,.39,1) */
     animation-fill-mode: forwards;
 }
@@ -82,14 +83,18 @@
 
 
 a {
-    color: inherit; /* Наследуем цвет родителя */
-    text-decoration: none; /* Убираем подчеркивание */
+    color: inherit;
+    /* Наследуем цвет родителя */
+    text-decoration: none;
+    /* Убираем подчеркивание */
 }
 
 a:hover,
 a:active,
 a:visited,
 a:focus {
-    color: inherit; /* Убираем цвет для всех состояний */
-    text-decoration: none; /* Убираем подчеркивание при наведении и клике */
+    color: inherit;
+    /* Убираем цвет для всех состояний */
+    text-decoration: none;
+    /* Убираем подчеркивание при наведении и клике */
 }

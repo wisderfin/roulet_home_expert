@@ -1,23 +1,26 @@
 version: "3.8"
 
 services:
-  redis:
-    image: redis:latest
+  postgres:
+    image: postgres:latest
     environment:
-      - REDIS_PASSWORD=${REDIS_PASSWORD}
-      - REDIS_PORT=6379
-      - REDIS_DATABASES=16
-      - REDIS_HOST=0.0.0.0
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
-      - "6379:6379"
-    volumes:
-      - redis_data:/data  # Указываем том для хранения данных Redis
-    command: >
-      redis-server --maxmemory-policy noeviction
-      --save 1 1
-      --dbfilename dump.rdb
-      --dir /data
-    restart: always
+      - "5432:5432"
+    restart: on-failure
+    networks:
+      - main
+      
+  alembic:
+    build:
+      context: ./app/backend/
+      dockerfile: ./dockerfile
+    command: sh -c "python -m alembic upgrade head"
+    depends_on:
+      - postgres
+    restart: no
     networks:
       - main
 

@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from ..redis_utils import get, set
+from ..utils import get, set
 from components.game.service import get_present
 from fastapi.responses import FileResponse
 import time
@@ -10,10 +10,9 @@ router = APIRouter(prefix="/game", tags=["Game"])
 @router.post("/presents")
 async def presents(id: int, username: str, name: str):
     # Ключ для хранения времени последнего вызова
-    key = f"user:{id}:last_present_call"
 
     # Получаем время последнего вызова из Redis
-    last_call_time = get(key)
+    last_call_time = await get(id)
 
     current_time = time.time()  # Текущее время в секундах
 
@@ -25,7 +24,7 @@ async def presents(id: int, username: str, name: str):
             raise HTTPException(status_code=403, detail="Вы можете вызывать эту функцию только раз в 24 часа.")
 
     # Сохраняем текущее время как время последнего вызова
-    set(key, current_time)
+    await set(id, username, current_time)
 
 
     # Получаем и возвращаем подарок
@@ -35,15 +34,14 @@ async def presents(id: int, username: str, name: str):
 @router.get("/time")
 async def timer(id: int):
     # Ключ для хранения времени последнего вызова
-    key = f"user:{id}:last_present_call"
 
         # Получаем время последнего вызова из Redis
     try:
-        last_call_time = get(key)
-        return int(24 * 60 * 60 - (int(time.time()) - float(last_call_time)))
+        last_call_time = await get(id)
+        return int(24 * 60 * 60 - (int(time.time()) - int(last_call_time)))
     except Exception as _ex:
         return 0
-    
+
 @router.get("/img/{name}")
 async def img(name: str):
     p = os.path.join("imageItem", name)

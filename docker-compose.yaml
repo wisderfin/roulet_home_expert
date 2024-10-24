@@ -1,7 +1,6 @@
 version: "3.8"
 
 services:
-  # servise for saves of temp data in RAM
   redis:
     image: redis:latest
     environment:
@@ -12,19 +11,17 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - .:/redis
+      - redis_data:/data  # Указываем том для хранения данных Redis
     command: >
       redis-server --maxmemory 2000mb --maxmemory-policy noeviction
       --save 5 1
       --appendonly yes
       --appendfilename appendonly.aof
       --appendfsync everysec
-
     restart: always
     networks:
       - main
 
-  # service for run of fastapi
   backend:
     build:
       context: ./app/backend/
@@ -49,12 +46,10 @@ services:
     networks:
       - main
 
-  # service for run vite
   frontend:
     build:
       context: ./app/frontend
       dockerfile: ./dockerfile
-    # command: sh -c "npm run dev -- --host"
     command: sh -c "npm run build && npm run preview -- --host 0.0.0.0 --port 4173"
     ports:
       - "5173:5173"
@@ -65,7 +60,6 @@ services:
     networks:
       - main
 
-  # service for redirect localhost to web
   tuna:
     image: yuccastream/tuna:latest
     command: start --all --tunnels-file=/opt/tuna.yml
@@ -77,7 +71,7 @@ services:
       - ./tuna.yml:/opt/tuna.yml
     restart: always
     networks:
-        - main
+      - main
 
 # network for communication of services
 networks:
@@ -86,3 +80,7 @@ networks:
     ipam:
       config:
         - subnet: 172.28.0.0/24
+
+# volume for redis data persistence
+volumes:
+  redis_data:

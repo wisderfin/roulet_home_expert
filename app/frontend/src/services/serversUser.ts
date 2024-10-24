@@ -4,7 +4,6 @@ const tg = window.Telegram.WebApp
 
 // Получает id и username из Telegram
 export function getUserInfo(): string {
-  console.log(tg.initData);
   
   return JSON.stringify({
     id: tg.initDataUnsafe.user?.id,
@@ -17,6 +16,7 @@ export function getUserInfo(): string {
 
 
 export async function playRoulette(): Promise<any> {
+  console.log(tg.initData);
   try {
     const response = await axios({
       method: "post",

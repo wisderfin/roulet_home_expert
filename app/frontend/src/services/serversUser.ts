@@ -4,11 +4,15 @@ const tg = window.Telegram.WebApp
 
 // Получает id и username из Telegram
 export function getUserInfo(): string {
+  console.log(tg.initData);
+  
   return JSON.stringify({
     id: tg.initDataUnsafe.user?.id,
     username: tg.initDataUnsafe.user?.username,
   })
 }
+
+
 
 
 

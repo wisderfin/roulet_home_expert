@@ -14,8 +14,8 @@ services:
       - redis_data:/data  # Указываем том для хранения данных Redis
     command: >
       redis-server --maxmemory-policy noeviction
-      --save 1 1       # Сохранять каждые 1 сек, если есть хотя бы 1 изменение
-      --dbfilename dump.rdb  # Указать имя файла для RDB
+      --save 1 1
+      --dbfilename dump.rdb
       --dir /data
     restart: always
     networks:

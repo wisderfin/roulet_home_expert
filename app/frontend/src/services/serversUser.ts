@@ -16,7 +16,6 @@ export function getUserInfo(): string {
 
 
 export async function playRoulette(): Promise<any> {
-  let userInfo;
   try {
     const response = await axios({
       method: "post",

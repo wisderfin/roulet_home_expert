@@ -29,7 +29,7 @@ async def presents(id: int, username: str, name: str):
 
 
     # Получаем и возвращаем подарок
-    return await get_present(id, username)
+    return await get_present(id, username, name)
 
 
 @router.get("/time")

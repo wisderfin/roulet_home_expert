@@ -8,7 +8,7 @@ import os
 router = APIRouter(prefix="/game", tags=["Game"])
 
 @router.post("/presents")
-async def presents(id: int, username: str):
+async def presents(id: int, username: str, name: str):
     # Ключ для хранения времени последнего вызова
     key = f"user:{id}:last_present_call"
 

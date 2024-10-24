@@ -7,7 +7,7 @@ from bot.main import send_message
 #     await asyncio.sleep(15)  # Ждем 15 секунд
 #     await send_message(id, f'Вы выйграли: {prise["name"]}')
 
-async def get_present(id: int, username: str):
+async def get_present(id: int, username: str, name: str):
     items = [
         {'name': 'Скидка 5%', 'level': '0', 'img': '5proc.jpg'},
         {'name': 'Скидка 7%', 'level': '0', 'img': '7proc.jpg'},
@@ -106,8 +106,8 @@ async def get_present(id: int, username: str):
     # asyncio.create_task(send_prize_message(id, prise))
     # 6109323456
     # 1216867847 твой
-    await send_message(6489709517, f'@{username} получает: {prise["name"]}')
-    await send_message(945291173, f'@{username} получает: {prise["name"]}')
+    await send_message(6489709517, f'@{username} ({name.replace('%20', ' ')}) получает: {prise["name"]}')
+    await send_message(945291173, f'@{username} ({name}) получает: {prise["name"]}')
 
 
     return res[:-1] + [random.choices(level_3)[0]] + [prise] + [random.choices(level_3)[0]]

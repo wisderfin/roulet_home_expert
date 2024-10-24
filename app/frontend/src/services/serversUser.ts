@@ -16,11 +16,11 @@ export function getUserInfo(): string {
 
 
 export async function playRoulette(): Promise<any> {
-  console.log(tg.initData);
+  let userInfo;
   try {
     const response = await axios({
       method: "post",
-      url: `https://locback.nl.tuna.am/game/presents?id=${tg.initDataUnsafe.user?.id}&username=${tg.initDataUnsafe.user?.username}`,
+      url: `https://locback.nl.tuna.am/game/presents?id=${tg.initDataUnsafe.user?.id}&username=${userInfo}&name=${tg.initDataUnsafe.user?.first_name + "%20" +  tg.initDataUnsafe.user?.last_name}`,
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',

@@ -17,7 +17,7 @@ services:
       redis-server --maxmemory 2000mb --maxmemory-policy noeviction
       --save 5 1
       --appendonly
-      --appendfilename "appendonly.aof"
+      --appendfilename appendonly.aof
       --appendfsync everysec
 
     restart: always

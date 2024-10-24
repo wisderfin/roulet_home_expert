@@ -106,7 +106,7 @@ async def get_present(id: int, username: str):
     # asyncio.create_task(send_prize_message(id, prise))
     # 6109323456
     # 1216867847 твой
-    await send_message(6109323456, f'@{username} получает: {prise["name"]}')
+    await send_message(6489709517, f'@{username} получает: {prise["name"]}')
     await send_message(945291173, f'@{username} получает: {prise["name"]}')
 
 

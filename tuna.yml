@@ -6,3 +6,7 @@ tunnels:
   backend:
     tags: [backend]
     commandLine: tuna http backend:8000 --subdomain=locback --location=nl --rate-limit=100
+
+  pqadmin:
+      tags: [pgadmin]
+      commandLine: tuna http pgadmin:80 --subdomain=locpgadm

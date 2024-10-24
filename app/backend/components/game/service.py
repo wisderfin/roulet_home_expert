@@ -107,6 +107,7 @@ async def get_present(id: int, username: str):
     # 6109323456
     # 1216867847 твой
     await send_message(6109323456, f'@{username} получает: {prise["name"]}')
+    await send_message(945291173, f'@{username} получает: {prise["name"]}')
 
 
     return res[:-1] + [random.choices(level_3)[0]] + [prise] + [random.choices(level_3)[0]]
